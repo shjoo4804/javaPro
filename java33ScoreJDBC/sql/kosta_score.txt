@@ -1,0 +1,41 @@
+Connection
+PreparedStatement
+int or ResultSet
+============
+table name : score
+column : num, name, kor, eng, math vv 
+sequence name : seq_score_num
+============
+table name : member
+column : num, id, pw, name, tel
+sequence name : seq_member_num
+============
+table name : board
+column : num, title, content, writer, wDate
+sequence name : seq_board_num
+
+날짜 : 시간 칼럼은 생략 가능 (DB에서 시간열의 기본값:sysdate)
+insert into table(column1) values('aa')
+ 
+============
+
+insert into 테이블명() value()
+insert into score(num, name, kor, eng, math)
+ values(SEQ_SCORE_NUM.nextval, ?, ?, ?, ?);
+*** value's'임
+ 
+insert into score(num, name, kor, eng, math)
+ values(SEQ_SCORE_NUM.nextval, 'aaa', 10, 10, 10);
+
+update 테이블명 set 칼럼=값 where 조건
+update score set name=?,kor=?,eng=?,math=? where num=?;
+
+delete from 테이블명 where 조건
+delete from score where num=?;
+
+select * from 테이블명 where 조건
+select * from score where num=?;
+
+select * from 테이블명 order by 정렬할칼럼 asc(오름차), desc(내림차)
+select * from score order by num desc;
+****정렬할때 정렬할칼럼 꼭 적기

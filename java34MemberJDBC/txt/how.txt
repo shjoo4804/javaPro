@@ -1,0 +1,59 @@
+VO 생성 - VO getter, setter
+
+DAO 생성 - 인터페이스
+ : 메소드 insert, update, delete, selectAll, selectOne
+
+DAOimpl 생성 - DAO를 상속받은 클래스
+
+Developer에서 member 테이블 생성
+eclipse에서 lib-ojdbc6.jar 복붙 후, 라이브러리 생성
+
+<<DAOimpl에서 메소드 구현 >>
+- jdbc 사용하기
+1. 생성자에서 Class.forName(오라클 드라이버 연결)
+2. Connection 객체로 URL, USER, PW 연결
+ (.DriverManager.getConnection)
+3. sql쿼리문 구현 및 반환
+   구현: PreparedStatement
+    ***Statement 객체에 Connection 객체로 SQL쿼리문 입력
+     .setInt(인덱스, 넣을값) 입력
+     .execute~() 로 db의 값 설정or가져오기
+   
+   반환: int / ResultSet
+   
+ try catch로 감싸기, finally로 닫아주기
+
+insert, update, delete
+selectAll, selectOne
+
+
+<<Main문에서 확인하기>>
+DAO객체를 DAOimpl로 캐스팅해서 생성
+각각의 메소드 확인하기
+try catch finally로 정리
+
+
+
+SQL쿼리문
+insert into 테이블명(열1, 열2..) values(값1, 값2...)
+update 테이블명 set 열=값 where 조건
+delete from 테이블명 where 조건
+select 삭제할 열 from 테이블면 where 조건 order by 정렬할열 asc/desc
+
+
+
+private Connection conn;
+private PreparedStatement pstmt;
+private ResultSet rs;
+
+private final String DRIVER_NAME = "oracle.jdbc.OracleDriver";
+private final String URL = "jdbc:oracle:thin:@localhost:1521/xe";
+private final String USER = "kosta";
+private final String PASSWORD = "hi123456";
+
+private final String SQL_INSERT = "insert into score(num, name, kor, eng, math) values(SEQ_SCORE_NUM.nextval, ?, ?, ?, ?)";
+private final String SQL_UPDATE = "update score set name=?,kor=?,eng=?,math=? where num=?";
+private final String SQL_DELETE = "delete from score where num=?";
+private final String SQL_SELECT_ONE = "select * from score where num=?";
+private final String SQL_SELECT_ALL = "select * from score order by num desc";
+	

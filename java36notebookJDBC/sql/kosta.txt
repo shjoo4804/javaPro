@@ -1,0 +1,20 @@
+--table name : notebook
+--column : num, productNO, productName, modelName, price
+--sequence name : seq_notebook_num
+--===================================
+
+CREATE TABLE NOTEBOOK2 
+(
+  NUM NUMBER NOT NULL 
+, PRODUCT_NO VARCHAR2(20) NOT NULL 
+, PRODUCT_NAME VARCHAR2(20) NOT NULL 
+, MODEL_NAME VARCHAR2(20) NOT NULL 
+, PRICE NUMBER NOT NULL 
+, CONSTRAINT NOTEBOOK2_PK PRIMARY KEY 
+  (
+    NUM 
+  )
+  ENABLE 
+);
+
+drop table notebook;

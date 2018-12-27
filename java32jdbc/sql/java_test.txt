@@ -1,0 +1,5 @@
+insert into test(name, age) values('aaa2', 22);
+
+update test set name='ddd',age='44' where name='aaa' and age='11';
+
+delete from test where name='kim' and age='30';
